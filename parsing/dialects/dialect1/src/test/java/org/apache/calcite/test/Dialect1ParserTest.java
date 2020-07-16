@@ -3209,4 +3209,11 @@ final class Dialect1ParserTest extends SqlDialectParserTest {
     final String expected = "DROP MACRO `FOO`";
     sql(sql).ok(expected);
   }
+
+  @Test public void testTimeZoneOptionTime() {
+    final String sql = "create table foo (bar time(2) with time zone)";
+    final String expected =
+        "CREATE TABLE `FOO` (`BAR` TIME_WITH_TIME_ZONE(2) WITH TIME ZONE)";
+    sql(sql).ok(expected);
+  }
 }
